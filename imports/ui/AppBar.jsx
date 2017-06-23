@@ -29,22 +29,28 @@ const Logged = (props) => (
   </IconMenu>
 );
 
-const MenuItems = (props) => (
-  <IconMenu
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-    <MenuItem primaryText="Home" />
-    <MenuItem primaryText="Option 1" />
-    <MenuItem primaryText="Option 2" />
-    <MenuItem primaryText="Option 3" />
-    <MenuItem primaryText="Option 4" />
-    <MenuItem primaryText="Option 5" />
-  </IconMenu>
-);
+const catData = [
+  {
+    code: 'cat0',
+    description: 'eD ideas',
+  },
+  {
+    code: 'cat1',
+    description: 'Option1',
+  },
+  {
+    code: 'cat2',
+    description: 'Option2',
+  },
+  {
+    code: 'cat3',
+    description: 'Option3',
+  },
+  {
+    code: 'cat4',
+    description: 'Option4',
+  }
+];
 
 Logged.muiName = 'IconMenu';
 
@@ -69,7 +75,19 @@ class AppBarExampleComposition extends Component {
         />
         <AppBar
           title="Menu"
-          iconElementLeft={<MenuItems />}
+          iconElementLeft={
+            <IconMenu
+            iconButtonElement={
+              <IconButton><MoreVertIcon /></IconButton>
+            }
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            >
+            {catData.map( (row, index) => (
+                <MenuItem primaryText={row.description} />
+              ))}
+          </IconMenu>
+          }
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
       </div>
