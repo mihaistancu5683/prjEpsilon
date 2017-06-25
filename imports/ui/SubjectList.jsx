@@ -91,9 +91,7 @@ export default class TableExampleComplex extends Component {
             adjustForCheckbox={this.state.showCheckboxes}
             enableSelectAll={this.state.enableSelectAll}
           >
-            <TableRow
-              displayRowCheckbox={this.state.displayRowCheckbox}
-            >
+            <TableRow>
               <TableHeaderColumn tooltip="The code">Code</TableHeaderColumn>
               <TableHeaderColumn tooltip="The Description">Description</TableHeaderColumn>
               <TableHeaderColumn tooltip="The Status">Status</TableHeaderColumn>
@@ -106,9 +104,7 @@ export default class TableExampleComplex extends Component {
             stripedRows={this.state.stripedRows}
           >
             {tableData.map( (row, index) => (
-              <TableRow 
-              displayRowCheckbox={this.state.displayRowCheckbox}
-              key={index}>
+              <TableRow key={index}>
                 <TableRowColumn>{row.code}</TableRowColumn>
                 <TableRowColumn>{row.description}</TableRowColumn>
                 <TableRowColumn>{row.status}</TableRowColumn>

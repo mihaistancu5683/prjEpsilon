@@ -84,7 +84,8 @@ class AppBarExampleComposition extends Component {
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             >
             {catData.map( (row, index) => (
-                <MenuItem primaryText={row.description} />
+                <MenuItem primaryText={row.description} 
+                key = {index}/>
               ))}
           </IconMenu>
           }
