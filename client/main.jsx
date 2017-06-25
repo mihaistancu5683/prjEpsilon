@@ -1,14 +1,29 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin'; // For touches and clicks within React
-import {Router, Route, browserHistory} from 'react-router'; // For routing
+import { render, ReactDOM } from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import App from '../imports/ui/App.jsx';
 import Register from '../imports/ui/register.jsx';
+import Lost from '../imports/ui/lost.jsx';
 
 injectTapEventPlugin();
 
-Meteor.startup(() => {  //will run in the client because we are in the Client folder
-    render(<Register />, document.getElementById('render-target')); //render App.jsx in main.html, in render-target div
+Meteor.startup(() => {
+  render((
+    <HashRouter>
+      <Main />
+    </HashRouter>
+  ), document.getElementById('render-target'));
 });
+
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path='/' component={App}/>
+      <Route path='/register' component={Register}/>
+      <Route path='*' component={Lost}/>
+    </Switch>
+  </main>
+)

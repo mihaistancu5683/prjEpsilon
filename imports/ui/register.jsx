@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
-import { Users } from '../api/users';
+//import { browserHistory } from 'react-router';
+import { Users } from '../api/users.js';
 
 export default class Register extends Component {
 	submitUser(event) {
