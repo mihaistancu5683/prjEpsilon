@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render, ReactDOM } from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import App from '../imports/ui/App.jsx';
 import Register from '../imports/ui/register.jsx';
@@ -12,9 +12,9 @@ injectTapEventPlugin();
 
 Meteor.startup(() => {
   render((
-    <HashRouter>
+    <BrowserRouter>
       <Main />
-    </HashRouter>
+    </BrowserRouter>
   ), document.getElementById('render-target'));
 });
 
