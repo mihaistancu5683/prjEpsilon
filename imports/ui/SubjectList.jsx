@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {
   Table,
   TableBody,
@@ -10,6 +10,9 @@ import {
 } from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+import { createContainer } from 'meteor/react-meteor-data'
+import { Link } from 'react-router'; // Link add subject to the route
+import { Subjects } from '../api/subjects.js';
 
 const styles = {
   propContainer: {
@@ -22,35 +25,7 @@ const styles = {
   },
 };
 
-const tableData = [
-  {
-    code: 'RO-157',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    status: 'Opened',
-  },
-  {
-    code: 'RO-621',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    status: 'Closed',
-  },
-    {
-    code: 'RO-2051',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    status: 'In Progress',
-  },
-    {
-    code: 'RO-3196',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    status: 'Opened',
-  },
-    {
-    code: 'RO-4025',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    status: 'Closed',
-  }
-];
-
-export default class TableExampleComplex extends Component {
+export  class TableExampleComplex extends Component {
   state = {
     selectable: false,
     displaySelectAll: false,
@@ -76,6 +51,16 @@ export default class TableExampleComplex extends Component {
     this.setState({height: event.target.value});
   };
 
+  renderSubjects(){
+    return this.props.subjects.map((subject) => (
+      <TableRow key={subject.subjectId}>
+        <TableRowColumn>{subject.subjectId}</TableRowColumn>
+        <TableRowColumn>{subject.subjectTitle}</TableRowColumn>
+        <TableRowColumn>{subject.subjectDescription}</TableRowColumn>
+      </TableRow>
+    ));
+  }
+
   render() {
     return (
       <div>
@@ -93,7 +78,7 @@ export default class TableExampleComplex extends Component {
           >
             <TableRow>
               <TableHeaderColumn tooltip="The code">Code</TableHeaderColumn>
-              <TableHeaderColumn tooltip="The Description">Description</TableHeaderColumn>
+              <TableHeaderColumn tooltip="The Title">Title</TableHeaderColumn>
               <TableHeaderColumn tooltip="The Status">Status</TableHeaderColumn>
             </TableRow>
           </TableHeader>
@@ -103,16 +88,22 @@ export default class TableExampleComplex extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {tableData.map( (row, index) => (
-              <TableRow key={index}>
-                <TableRowColumn>{row.code}</TableRowColumn>
-                <TableRowColumn>{row.description}</TableRowColumn>
-                <TableRowColumn>{row.status}</TableRowColumn>
-              </TableRow>
-              ))}
+            {this.renderSubjects()}
           </TableBody>
         </Table>
       </div>
     );
   }
 }
+
+TableExampleComplex.propTypes = {
+  subjects: PropTypes.array.isRequired,
+};
+
+export default createContainer (() => {
+  Meteor.subscribe('subjects');
+  
+  return {
+    subjects: Subjects.find({}).fetch(), //subjects: Subjects.find({name: "SearchNameHere"}, {sort: {name:1}}).fetch(),
+  };
+}, TableExampleComplex);
