@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router-dom';
 
 // We import all of the components used in App
 import AppBarExampleComposition from './AppBar.jsx';
@@ -17,6 +18,7 @@ export default class App extends Component {
                         <AppBarExampleComposition />
                     </div>
                     <div id="SubjectList">
+                        <Link to="/add_subject">Add subject </Link>
                         <TableExampleComplex />
                     </div>
                 </div>
