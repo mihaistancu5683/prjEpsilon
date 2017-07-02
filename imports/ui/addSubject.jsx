@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { browserHistory } from 'react-router';
 import { Subjects } from '../api/subjects.js';
 
 export default class AddSubject extends Component {
@@ -14,7 +13,7 @@ export default class AddSubject extends Component {
 			subjectAuthor: this.refs.subjectAuthor.value,
 			createdAt: new Date()
 		});
-		//browserHistory.push('/'); //after inserting go back home
+		this.props.history.push('/');//after inserting go back home
 	}
 	render() {
 		return(

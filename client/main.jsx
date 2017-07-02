@@ -13,7 +13,7 @@ injectTapEventPlugin();
 
 Meteor.startup(() => {
   render((
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Main />
     </BrowserRouter>
   ), document.getElementById('render-target'));
