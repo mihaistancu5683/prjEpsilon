@@ -7,27 +7,21 @@ import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import { withHistory, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-class Login extends Component {
-  static muiName = 'FlatButton';
-  render() {
-    return (
-      <FlatButton {...this.props} label="Login" />
-    );
-  }
-}
-
-const Logged = (props) => (
-  <IconMenu
-    //{...props}
-    iconButtonElement={
-      <FlatButton label="Welcome" />
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-  </IconMenu>
-);
+// const Logged = (props) => (
+//   <IconMenu
+//     //{...props}
+//     iconButtonElement={
+      
+//       //<a href="#" onClick={this.logout}>Logout</a>
+//     }
+//     targetOrigin={{horizontal: 'right', vertical: 'top'}}
+//     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+//   >
+//   </IconMenu>
+// );
 
 const catData = [
   {
@@ -52,48 +46,49 @@ const catData = [
   }
 ];
 
-Logged.muiName = 'IconMenu';
+// Logged.muiName = 'IconMenu';
 
-class AppBarExampleComposition extends Component {
-  state = {
-    logged: true,
-  };
+export default class AppBarExampleComposition extends Component {
+  constructor(props){
+    super(props);
+    // this.state = this.getMeteorData();
+    // this.logout = this.logout.bind(this);
+    // this.state = {
+    //   username: ''
+    // };
+  }
 
-  handleChange = (event, logged) => {
-    this.setState({logged: logged});
-  };
+  
 
   render() {
+    let currentUser = this.props.currentUser;
+    let userDataAvailable = (currentUser !== undefined);
+    let loggedIn = (currentUser && userDataAvailable);
     return (
       <div>
-        <Toggle
-          label="Logged"
-          defaultToggled={true}
-          onToggle={this.handleChange}
-          labelPosition="right"
-          style={{margin: 20}}
-        />
         <AppBar
           title="Menu"
           iconElementLeft={
             <IconMenu
-            iconButtonElement={
-              <IconButton><MoreVertIcon /></IconButton>
-            }
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            >
-            {catData.map( (row, index) => (
-                <MenuItem primaryText={row.description} 
-                key = {index}/>
-              ))}
-          </IconMenu>
+              iconButtonElement={
+                <IconButton><MoreVertIcon /></IconButton>
+              }
+              targetOrigin={{horizontal: 'right', vertical: 'top'}}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+              >
+              {catData.map( (row, index) => (
+                  <MenuItem primaryText={row.description} 
+                  key = {index}/>
+                ))}
+            </IconMenu>
           }
-          iconElementRight={this.state.logged ? <Logged /> : <Login />}
+         // {/* iconElementRight={ <a href="#" onClick={this.logout}>Logout</a>   } */}
         />
       </div>
     );
   }
 }
 
-export default AppBarExampleComposition;
+AppBarExampleComposition.propTypes = {
+  username: PropTypes.string
+}
