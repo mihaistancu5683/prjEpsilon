@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { withHistory } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import MainContainer from './MainContainer.jsx';
-
+import LoginInfo from '../components/LoginInfo';
+import LoginContainer from './LoginContainer';
 import TableExampleComplex from '../SubjectList.jsx';
-import AppBarExampleComposition from '../AppBar.jsx';
 
 export default class AppContainer extends Component {
   constructor(props){
@@ -44,33 +45,27 @@ export default class AppContainer extends Component {
     this.props.history.push('/login');
   }
 
-  render(){
-    return (//MuiThemeProvider expects only one child element
+  render() {
+    let currentUser = this.props.currentUser;
+    let userDataAvailable = (currentUser !== undefined);
+    let loggedIn = (currentUser && userDataAvailable);
+    return (
       <MuiThemeProvider>
         <div>
-          <div>
-            <div id="AppBar">
-                <AppBarExampleComposition/>
+          <nav className="nav-extended">
+            <div className="nav-wrapper">
+              <a href="#" className="brand-logo">Project Epsilon</a>
+              <LoginInfo />
+            <div>
+            {this.props.children}
+        </div>
             </div>
-            <div id="SubjectList">
-                <Link to="/add_subject">Add subject </Link>
+          </nav>
+            <div id="nav-wrapper">
                 <TableExampleComplex />
+                <Link to="/add_subject">Add subject </Link>
             </div>
-          </div>
-           <nav className="navbar navbar-default navbar-static-top">
-            <div className="container">
-               <div className="navbar-collapse">
-                <ul className="nav navbar-nav navbar-right">
-                  <li>
-                    <a href="#" onClick={this.logout}>Logout</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav> 
-          <MainContainer />
         </div>
       </MuiThemeProvider>
     );
-  }
-}
+  }}
