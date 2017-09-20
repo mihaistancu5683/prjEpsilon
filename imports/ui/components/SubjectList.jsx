@@ -13,7 +13,8 @@ import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import { createContainer } from 'meteor/react-meteor-data'
 import { Link } from 'react-router'; // Link add subject to the route
-import { Subjects } from '../api/subjects.js';
+import { Subjects } from '../../api/subjects.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles = {
   propContainer: {
@@ -64,6 +65,7 @@ export  class TableExampleComplex extends Component {
 
   render() {
     return (
+      <MuiThemeProvider>
       <div>
         <Table
           height={this.state.height}
@@ -93,6 +95,7 @@ export  class TableExampleComplex extends Component {
           </TableBody>
         </Table>
       </div>
+      </MuiThemeProvider>
     );
   }
 }

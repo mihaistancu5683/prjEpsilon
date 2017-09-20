@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Subjects } from '../api/subjects.js';
+import { Subjects } from '../../api/subjects.js';
 
 export default class AddSubject extends Component {
 	submitSubject(event) {
