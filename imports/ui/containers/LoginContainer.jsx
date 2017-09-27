@@ -1,9 +1,10 @@
 import { createContainer } from 'meteor/react-meteor-data';
-import WelcomeUser from '../pages/WelcomeUser';
+import { Meteor } from 'meteor/meteor';
+import WelcomeUser from '../pages/WelcomeUser.jsx';
 
-export default LoginContainer = createContainer(({params}) => {
+export default LoginContainer = createContainer(() => {
   const currentUser = Meteor.user();
   return {
-    currentUser
+    currentUser,
   };
 }, WelcomeUser);
