@@ -13,10 +13,10 @@ export default class SignupPage extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const username = this.refs.signupName.value;
-    const email = this.refs.signupEmail.value;
-    const password = this.refs.signupPassword.value;
-    this.setState({ error: 'test' })
+    const username = this.signupName.value;
+    const email = this.signupEmail.value;
+    const password = this.signupPassword.value;
+    this.setState({ error: 'test' });
     Accounts.createUser({ email, username, password }, (err) => {
       if (err) {
         this.setState({
@@ -42,14 +42,13 @@ export default class SignupPage extends Component {
               }
               <form
                 className="col s12"
-                ref="signupForm"
                 onSubmit={this.handleSubmit}
               >
                 <div className="row">
                   <div className="input-field col s12">
                     <input
                       type="text"
-                      ref="signupName"
+                      ref={(x) => { this.signupName = x; }}
                       placeholder="User name"
                       name="username"
                       id="username"
@@ -60,7 +59,7 @@ export default class SignupPage extends Component {
                   <div className="input-field col s12">
                     <input
                       type="email"
-                      ref="signupEmail"
+                      ref={(x) => { this.signupEmail = x; }}
                       placeholder="E-mail address"
                       name="email"
                       id="email"
@@ -71,7 +70,7 @@ export default class SignupPage extends Component {
                   <div className="input-field col s12">
                     <input
                       type="password"
-                      ref="signupPassword"
+                      ref={(x) => { this.signupPassword = x; }}
                       placeholder="Password"
                       name="password"
                       id="password"
@@ -84,7 +83,6 @@ export default class SignupPage extends Component {
                     <p className="right-align">
                       <input
                         type="submit"
-                        ref="signup-button"
                         className="btn btn-large waves-effect waves-light"
                         value="Sign Up"
                       />
