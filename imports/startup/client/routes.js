@@ -10,7 +10,7 @@ import LoginPage from './../../ui/pages/LoginPage.jsx';
 import AddSubject from './../../ui/pages/addSubject.jsx';
 import Lost from './../../ui/pages/lost.jsx';
 
-export const renderRoutes = () => (
+const renderRoutes = () => (
   <BrowserRouter>
     <div>
       <Route exact path="/" component={MainPage} />
@@ -21,3 +21,5 @@ export const renderRoutes = () => (
     </div>
   </BrowserRouter>
 );
+
+export default renderRoutes;
