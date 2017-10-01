@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import { Subjects } from '../../api/subjects.js';
 
 export default class AddSubject extends Component {
+  constructor() {
+    super();
+    this.submitSubject = this.submitSubject.bind(this);
+  }
+
   submitSubject(event) {
     event.preventDefault(); // prevent refresh and submit
     Subjects.insert({
@@ -21,7 +26,7 @@ export default class AddSubject extends Component {
       <div>
         <form
           className="col s12"
-          onSubmit={this.submitSubject.bind(this)}
+          onSubmit={this.submitSubject}
         >
           <h3> Add new subject </h3>
           <div className="row">
