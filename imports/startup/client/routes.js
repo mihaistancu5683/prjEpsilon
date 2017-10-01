@@ -8,7 +8,7 @@ import MainPage from './../../ui/containers/MainPage.jsx';
 import SignupPage from './../../ui/pages/SignupPage.jsx';
 import LoginPage from './../../ui/pages/LoginPage.jsx';
 import AddSubject from './../../ui/pages/addSubject.jsx';
-import Lost from './../../ui/pages/lost.jsx';
+import LostPage from './../../ui/pages/lost.jsx';
 
 const renderRoutes = () => (
   <BrowserRouter>
@@ -17,7 +17,7 @@ const renderRoutes = () => (
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/add_subject" component={AddSubject} />
-      <Route path="*" component={Lost} />
+      <Route path="*" component={LostPage} />
     </div>
   </BrowserRouter>
 );
