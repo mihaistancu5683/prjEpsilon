@@ -2,6 +2,7 @@ import { Mongo } from 'meteor/mongo';
 /* eslint import/no-unresolved: 0 */
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+/* eslint import/prefer-default-export: 0 */
 export const Subjects = new Mongo.Collection('subjects');
 
 const SubjectSchema = new SimpleSchema({
