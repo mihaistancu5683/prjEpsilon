@@ -104,5 +104,5 @@ export default class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
-  history: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  history: PropTypes.string.isRequired,
 };

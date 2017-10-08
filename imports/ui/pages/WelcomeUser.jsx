@@ -23,5 +23,5 @@ export default class WelcomeUser extends Component {
 }
 
 WelcomeUser.propTypes = {
-  currentUser: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  currentUser: PropTypes.string.isRequired,
 };

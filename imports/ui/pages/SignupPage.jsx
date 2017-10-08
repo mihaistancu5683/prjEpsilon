@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
+import PropTypes from 'prop-types';
 
 export default class SignupPage extends Component {
   constructor(props) {
@@ -100,3 +101,7 @@ export default class SignupPage extends Component {
     );
   }
 }
+
+SignupPage.propTypes = {
+  history: PropTypes.string.isRequired,
+};

@@ -49,5 +49,5 @@ export default class AddSubject extends Component {
 }
 
 AddSubject.propTypes = {
-  history: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  history: PropTypes.string.isRequired,
 };

@@ -68,5 +68,5 @@ export default class MainPage extends Component {
 }
 
 MainPage.propTypes = {
-  history: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  history: PropTypes.string.isRequired,
 };
