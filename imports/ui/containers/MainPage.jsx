@@ -68,5 +68,5 @@ export default class MainPage extends Component {
 }
 
 MainPage.propTypes = {
-  history: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };

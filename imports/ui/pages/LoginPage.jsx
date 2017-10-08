@@ -104,5 +104,5 @@ export default class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
-  history: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };

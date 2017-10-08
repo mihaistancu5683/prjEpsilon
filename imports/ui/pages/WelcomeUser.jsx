@@ -23,5 +23,5 @@ export default class WelcomeUser extends Component {
 }
 
 WelcomeUser.propTypes = {
-  currentUser: PropTypes.string.isRequired,
+  currentUser: PropTypes.object,
 };

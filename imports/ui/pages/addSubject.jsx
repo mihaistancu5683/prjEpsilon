@@ -49,5 +49,5 @@ export default class AddSubject extends Component {
 }
 
 AddSubject.propTypes = {
-  history: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };

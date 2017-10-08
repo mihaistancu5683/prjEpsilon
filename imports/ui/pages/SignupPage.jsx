@@ -103,5 +103,5 @@ export default class SignupPage extends Component {
 }
 
 SignupPage.propTypes = {
-  history: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };
